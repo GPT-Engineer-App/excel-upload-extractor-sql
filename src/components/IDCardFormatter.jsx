@@ -22,9 +22,19 @@ const IDCardFormatter = () => {
     setErrorMessage("");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const formData = new FormData();
+      formData.append("zipFile", zipFile);
 
-      setIsSuccess(true);
+      const response = await fetch("/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+      } else {
+        setErrorMessage("An error occurred while uploading the file.");
+      }
     } catch (error) {
       setErrorMessage("An error occurred while uploading the file.");
     }
@@ -37,6 +47,9 @@ const IDCardFormatter = () => {
       <FormControl>
         <FormLabel>Select Zip File</FormLabel>
         <Input type="file" accept=".zip" onChange={handleZipFileChange} />
+        <Text fontSize="sm" color="gray.500">
+          Zip file should only contain xls, xlsx, png, jpg, and jpeg files.
+        </Text>
       </FormControl>
       {zipFile && (
         <Box borderWidth={1} borderRadius="md" p={4}>
@@ -56,7 +69,7 @@ const IDCardFormatter = () => {
       {isSuccess && (
         <Box borderWidth={1} borderRadius="md" p={4} bg="green.100">
           <Text color="green.800" textAlign="center">
-            <FaFileArchive /> Zip file processed successfully!
+            <FaFileArchive /> Zip file uploaded and processed successfully!
           </Text>
         </Box>
       )}
