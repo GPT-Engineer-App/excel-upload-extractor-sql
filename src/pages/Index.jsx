@@ -4,26 +4,17 @@ import Navigation from "../components/Navigation";
 import IDCardFormatter from "../components/IDCardFormatter";
 import RegisterIDCard from "../components/RegisterIDCard";
 import HelpSection from "../components/HelpSection";
-import ThreeDotMenu from "../components/ThreeDotMenu";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("formatter");
-  const [isMenuVisible, setIsMenuVisible] = useState(true);
-
-  const toggleMenu = () => {
-    setIsMenuVisible(!isMenuVisible);
-  };
 
   return (
-    <Container maxW="container.lg" py={8} position="relative">
-      <ThreeDotMenu isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} />
+    <Container maxW="container.lg" py={8}>
       <HStack spacing={8} align="stretch">
-        {isMenuVisible && (
-          <Box flex="0 0 200px">
-            <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
-          </Box>
-        )}
-        <Box flex="1" ml={isMenuVisible ? 0 : 8}>
+        <Box flex="0 0 200px">
+          <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+        </Box>
+        <Box flex="1">
           <Heading size="xl" textAlign="center" mb={8}>
             ID Card Management System
           </Heading>
