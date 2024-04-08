@@ -3,6 +3,7 @@ import { Container, Heading, VStack } from "@chakra-ui/react";
 import Navigation from "../components/Navigation";
 import IDCardFormatter from "../components/IDCardFormatter";
 import RegisterIDCard from "../components/RegisterIDCard";
+import HelpSection from "../components/HelpSection";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("formatter");
@@ -14,7 +15,7 @@ const Index = () => {
           ID Card Management System
         </Heading>
         <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
-        {activeSection === "formatter" ? <IDCardFormatter /> : <RegisterIDCard />}
+        {activeSection === "formatter" ? <IDCardFormatter /> : activeSection === "register" ? <RegisterIDCard /> : <HelpSection />}
       </VStack>
     </Container>
   );

@@ -11,6 +11,9 @@ const Navigation = ({ activeSection, setActiveSection }) => {
         <Button onClick={() => setActiveSection("register")} variant={activeSection === "register" ? "solid" : "ghost"} colorScheme="blue">
           Register ID Card
         </Button>
+        <Button onClick={() => setActiveSection("help")} variant={activeSection === "help" ? "solid" : "ghost"} colorScheme="blue">
+          Help
+        </Button>
       </HStack>
     </Box>
   );
