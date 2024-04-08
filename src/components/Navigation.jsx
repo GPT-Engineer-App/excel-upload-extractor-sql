@@ -1,10 +1,10 @@
 import React from "react";
-import { Box, Button, HStack } from "@chakra-ui/react";
+import { Box, Button, VStack } from "@chakra-ui/react";
 
 const Navigation = ({ activeSection, setActiveSection }) => {
   return (
-    <Box bg="gray.100" py={4}>
-      <HStack spacing={4} justifyContent="center">
+    <Box bg="gray.100" p={4} minHeight="100vh">
+      <VStack spacing={4} align="stretch">
         <Button onClick={() => setActiveSection("formatter")} variant={activeSection === "formatter" ? "solid" : "ghost"} colorScheme="blue">
           ID Card Data Formatter
         </Button>
@@ -14,7 +14,7 @@ const Navigation = ({ activeSection, setActiveSection }) => {
         <Button onClick={() => setActiveSection("help")} variant={activeSection === "help" ? "solid" : "ghost"} colorScheme="blue">
           Help
         </Button>
-      </HStack>
+      </VStack>
     </Box>
   );
 };

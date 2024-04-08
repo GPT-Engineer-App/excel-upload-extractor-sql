@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Heading, VStack } from "@chakra-ui/react";
+import { Box, Container, Heading, HStack } from "@chakra-ui/react";
 import Navigation from "../components/Navigation";
 import IDCardFormatter from "../components/IDCardFormatter";
 import RegisterIDCard from "../components/RegisterIDCard";
@@ -10,13 +10,17 @@ const Index = () => {
 
   return (
     <Container maxW="container.lg" py={8}>
-      <VStack spacing={8} align="stretch">
-        <Heading size="xl" textAlign="center">
-          ID Card Management System
-        </Heading>
-        <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
-        {activeSection === "formatter" ? <IDCardFormatter /> : activeSection === "register" ? <RegisterIDCard /> : <HelpSection />}
-      </VStack>
+      <HStack spacing={8} align="stretch">
+        <Box flex="0 0 200px">
+          <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+        </Box>
+        <Box flex="1">
+          <Heading size="xl" textAlign="center" mb={8}>
+            ID Card Management System
+          </Heading>
+          {activeSection === "formatter" ? <IDCardFormatter /> : activeSection === "register" ? <RegisterIDCard /> : <HelpSection />}
+        </Box>
+      </HStack>
     </Container>
   );
 };
